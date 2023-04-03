@@ -28,15 +28,15 @@ class LoginPage(BasePage):
         self.page.fill(self.password_input, password)
         self.page.click(self.submit_button)
 
+        return self.page
+
     def login_with_not_existing_user(self, user=None):
         if user is None:
             email = self.config.email
-            password = self.config.password
         else:
             email = user.email
-            password = user.password
 
         self.page.fill(self.email_input, email)
         self.page.click(self.next_button)
-        return self.page.get_by_text("Couldn’t find your Google Account")
 
+        return self.page
